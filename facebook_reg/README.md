@@ -1,6 +1,6 @@
 # Facebook Registration for WordPress v.0.2 #
 
-This is not for Facebook Connect, it's for the [Facebook Registration Plugin](http://developers.facebook.com/docs/plugins/registration/), which is the red-headed step-child of Facebook's social plugin family. Once installed, the plugin will take add Facebook registration in place of the usual WordPress form, however, all registrations will create a normal WordPress user.
+This is not for Facebook Connect, it's for the [Facebook Registration Plugin](http://developers.facebook.com/docs/plugins/registration/), which is the red-headed step-child of Facebook's social plugin family. Once installed, the plugin will add Facebook registration in place of the usual WordPress form, however, all registrations will create a normal WordPress user.
 
 ### 1-3-2012 ###
 Initial release. 
@@ -24,4 +24,5 @@ Future releases will include the following, although I'd love to get some feedba
 * Easier field selection (without editing the JSON object directly.)
 * Customization of aesthetic options.
 * Email newly registered users.
-
+* Proper documentation.
+* A landing page for the plugin and docs.

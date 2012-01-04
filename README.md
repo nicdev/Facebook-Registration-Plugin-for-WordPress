@@ -14,6 +14,8 @@ No documentation yet, here's the short story:
 * Fill out the fields.
 * Ta da!
 
+[Need a demo?](http://fbreg.epiclabs.com/)
+
 ### Future plans ###
 
 This is a very early release, that's why it's only available in Github and hasn't been submitted to the official WordPress directory. 
@@ -24,5 +26,6 @@ Future releases will include the following, although I'd love to get some feedba
 * Easier field selection (without editing the JSON object directly.)
 * Customization of aesthetic options.
 * Email newly registered users.
+* Clean up options on uninstall.
 * Proper documentation.
 * A landing page for the plugin and docs.

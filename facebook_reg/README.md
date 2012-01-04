@@ -9,7 +9,7 @@ No documentation yet, here's the short story:
 
 * Get a Facebook application registered. Not sure how? Check out the [FB documentation](http://developers.facebook.com/docs/)
 * Get the application ID, application secret and redirect URI.
-** The redirect URI is set by you. You can simply point it to the home page of your WordPress site.
+	* The redirect URI is set by you. You can simply point it to the home page of your WordPress site.
 * Install the plugin, browse to Users > FB Registration Settings.
 * Fill out the fields.
 * Ta da!

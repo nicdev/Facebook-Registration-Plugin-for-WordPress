@@ -32,6 +32,7 @@ register_activation_hook( __FILE__, array( 'Fb_reg', 'install_init' ) );
 add_action( 'wp_head', array( 'Fb_reg', 'register_user' ) );
 add_action( 'admin_menu', array( 'Fb_reg', 'register_menu' ) );
 add_action( 'wp_enqueue_scripts', array( 'Fb_reg', 'script_queuer' ) );
+add_action( 'wp_print_footer_scripts', array( 'Fb_reg', 'so_say_we_all' ) );
 
 add_filter( 'register' , array( 'Fb_reg', 'change_reg_link' ) );
 

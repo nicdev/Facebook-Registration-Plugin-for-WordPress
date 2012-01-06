@@ -66,12 +66,48 @@ class Fb_reg{
 
 	public function register_user(){
 	
-		//Check whether we are doing a registration
-		
 		if( isset( $_REQUEST['signed_request'] ) && ! empty( $_REQUEST['signed_request'] ) )
 		{
-
-			global $wpdb;
+			
+			global $fb_reg_message; //I don't like ze globals
+				
+			$registration = self::process_registration();
+			
+			if( ! is_wp_error( $registration ) ) //Successful registration, let's piggyback on the so_say_we_all() that runs on WP_footer
+			{
+			
+				if( get_option( 'fb_reg_auto_login' ) != 1 )
+				{
+				
+					$fb_reg_message = new WP_Error( 'registration_error', __("Registration successful. Please log in ") ); //Not really an error, I know
+				
+				}
+				else
+				{
+				
+					$fb_reg_message = new WP_Error( 'registration_error', __( "Registration successful." ) ); //Not really an error, I know
+				
+				}
+				
+				
+			}
+			else //There was an actual error
+			{
+			
+				$fb_reg_message = $registration;
+			
+			}
+			
+		}
+			
+	}
+	
+	
+	public function process_registration(){
+	
+		//Check whether we are doing a registration
+		
+		global $wpdb;
 			
 			$response = self::parse_signed_request($_REQUEST['signed_request'], get_option( 'fb_reg_app_secret' ) );
 				
@@ -91,9 +127,9 @@ class Fb_reg{
 				{
 				
 					update_usermeta( $user_id, 'name', $response['registration']['name'] );
-					update_usermeta( $user_id, 'dob', $response['registration']['birthday']);
-					update_usermeta( $user_id, 'gender', $response['registration']['gender']);
-					update_usermeta( $user_id, 'phone', $response['registration']['phone']);
+					//update_usermeta( $user_id, 'dob', $response['registration']['birthday']);
+					//update_usermeta( $user_id, 'gender', $response['registration']['gender']);
+					//update_usermeta( $user_id, 'phone', $response['registration']['phone']);
 					
 					if( isset( $response['user_id']) && ! empty ($response['user_id'] ) )
 					{
@@ -136,7 +172,7 @@ class Fb_reg{
 					
 				}
 				
-				return new WP_Error('registration_error', __("Unable to register, please try again."));
+				return ( is_wp_error( $user_id ) ) ? $user_id : new WP_Error('registration_error', __("Unable to register, please try again."));
 				
 			}
 			else
@@ -147,8 +183,6 @@ class Fb_reg{
 			}
 			
 			return FALSE; //Something went wrong
-			
-		} 
 			
 	}
 	
@@ -210,6 +244,34 @@ class Fb_reg{
 		//Included in plugin
 		wp_register_script( 'fb_reg_js', plugins_url( 'js/fb_reg.js' , __FILE__ ), array( 'jquery', 'thickbox' ), FALSE, TRUE);
 		wp_enqueue_script( 'fb_reg_js');
+		
+	}
+	
+	/*********************************************************************************************************************
+		
+	So say we all! Send alert messages to screen
+		
+	*********************************************************************************************************************/
+	
+	function so_say_we_all(){
+		
+		global $fb_reg_message;
+		
+		if( is_wp_error( $fb_reg_message ) )
+		{
+			
+			$message = $fb_reg_message->get_error_message(); //Could be error, could be success, don't let the name fool you.
+					
+			if( ! empty( $message ) )
+			{
+			
+				echo "<script>alert( '{$message}' );</script>"; //Hacky? Maybe. Ugly? Fo sho. Send in the UX/UI experts, pls.
+			
+			}
+		
+		}
+		
+		unset( $fb_reg_message );	
 		
 	}
 			

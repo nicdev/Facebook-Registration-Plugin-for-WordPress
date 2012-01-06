@@ -23,7 +23,7 @@ This is a very early release, that's why it's only available in Github and hasn'
 Future releases will include the following, although I'd love to get some feedback and figure out what else should be included.
 
 
-* _Error messages._
+* ~~Error messages.~~
 * Easier field selection (without editing the JSON object directly.)
 * Customization of aesthetic options.
 * Email newly registered users.

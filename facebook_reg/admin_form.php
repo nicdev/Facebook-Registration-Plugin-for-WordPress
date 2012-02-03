@@ -34,7 +34,7 @@
 				</tr>
 				<tr>
 					<th scope="row"><label for="custom_fields">Custom fields (careful what you change here, it can break stuff.)</label></th>
-					<td><textarea cols="130" rows="10" id="description" name="custom_fields"><?php echo stripslashes( get_option( 'fb_reg_json_fields' ) ); ?></textarea><br></td>
+					<td><textarea cols="130" rows="10" id="description" name="custom_fields"><?php echo esc_textarea( stripslashes( get_option( 'fb_reg_json_fields' ) ) ); ?></textarea><br></td>
 				</tr>
 		
 			</tbody>

@@ -17,15 +17,15 @@
 			<tbody>
 				<tr class="form-field form-required">
 					<th scope="row"><label for="app_secret">Application Secret <span class="description">(required)</span></label></th>
-					<td><input type="text" aria-required="true" name="app_secret" value="<?php echo get_option( 'fb_reg_app_secret' ); ?>" ></td>
+					<td><input type="text" aria-required="true" name="app_secret" value="<?php echo esc_attr( get_option( 'fb_reg_app_secret' ) ); ?>" ></td>
 				</tr>
 				<tr class="form-field form-required">
 					<th scope="row"><label for="app_id">Application ID <span class="description">(required)</span></label></th>
-					<td><input type="text"  name="app_id" value="<?php echo get_option( 'fb_reg_app_id' ); ?>" ></td>
+					<td><input type="text"  name="app_id" value="<?php echo esc_attr( get_option( 'fb_reg_app_id' ) ); ?>" ></td>
 				</tr>
 				<tr class="form-field form-required">
 					<th scope="row"><label for="app_id">Redirect URI <span class="description">(required)</span></label></th>
-					<td><input type="text"  name="redirect_uri" value="<?php echo get_option( 'fb_reg_redir_uri' ); ?>" ></td>
+					<td><input type="text"  name="redirect_uri" value="<?php echo esc_attr( get_option( 'fb_reg_redir_uri' ) ); ?>" ></td>
 				</tr>
 				<tr>
 					<?php $checked = ( get_option( 'fb_reg_auto_login' ) == 1 ) ? 'checked="true"' : ''; ?>
